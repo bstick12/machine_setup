@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -euxo pipefail
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+function update_profile {
+  cp "${DIR}"/bashrc_extended ~/.bashrc_extended
+  cp "${DIR}"/bash_aliases ~/.bash_aliases
+}
+
+function install_brew {
+  brew bundle --file="${DIR}"/Brewfile
+}
+
+function install_vimplugins {
+  curl vimfiles.luan.sh/install | bash
+  vim-update
+}
+
+function main {
+  install_brew
+  update_profile
+  install_vimplugins
+}
+
+main
+
