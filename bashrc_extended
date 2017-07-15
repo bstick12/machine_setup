@@ -3,4 +3,12 @@ if [ -f "/home/brendan/.linuxbrew/opt/bash-git-prompt/share/gitprompt.sh" ]; the
     source "/home/brendan/.linuxbrew/opt/bash-git-prompt/share/gitprompt.sh"
 fi
 
+if [ -f "/usr/local/bin/kubectl" ]; then
+  source <(kubectl completion bash)
+fi
+
+if [ -f "/usr/local/bin/minikube" ]; then
+  source <(minikube completion bash)
+fi
+
 export PATH="$HOME/.linuxbrew/bin:$PATH"
