@@ -8,6 +8,7 @@ function update_profile {
   cp "${DIR}"/bashrc_extended ~/.bashrc_extended
   cp "${DIR}"/bash_aliases ~/.bash_aliases
   cp "${DIR}"/inputrc ~/.inputrc
+  cp "${DIR}"/gitconfig ~/.gitconfig
 }
 
 function install_brew {

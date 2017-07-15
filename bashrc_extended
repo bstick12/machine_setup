@@ -12,3 +12,4 @@ if [ -f "/usr/local/bin/minikube" ]; then
 fi
 
 export PATH="$HOME/.linuxbrew/bin:$PATH"
+export EDITOR=vi
