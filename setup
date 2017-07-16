@@ -16,6 +16,7 @@ function install_brew {
 }
 
 function install_vimplugins {
+  cp ${DIR}/vimrc.local.plugins ~/.vimrc.local.plugins
   curl vimfiles.luan.sh/install | bash
   vim-update
 }

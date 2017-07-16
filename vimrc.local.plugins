@@ -1,0 +1,2 @@
+" Plugin to allow moving code
+Plug 'matze/vim-move'
