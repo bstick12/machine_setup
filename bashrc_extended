@@ -13,3 +13,5 @@ fi
 
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 export EDITOR=vi
+
+eval "$(direnv hook bash)"
