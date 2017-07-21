@@ -21,10 +21,25 @@ function install_vimplugins {
   vim-update
 }
 
+function install_cli {
+
+  curl -LO "https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/1.2.0/credhub-linux-1.2.0.tgz"
+  tar -zxvf "credhub-linux-1.2.0.tgz"
+  rm "credhub-linux-1.2.0.tgz"
+  sudo mv "credhub" "/usr/local/bin"
+  chmod +x "/usr/local/bin/credhub"
+
+  curl -LO "https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.28-linux-amd64"
+  sudo mv "bosh-cli-2.0.28-linux-amd64" "/usr/local/bin/bosh"
+  chmod +x "/usr/local/bin/bosh"
+
+}
+
 function main {
   install_brew
   update_profile
   install_vimplugins
+  install_cli
 }
 
 main
