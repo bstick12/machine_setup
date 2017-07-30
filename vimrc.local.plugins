@@ -1,2 +1,4 @@
 " Plugin to allow moving code
 Plug 'matze/vim-move'
+Plug 'rust-lang/rust.vim'
+Plug 'vim-syntastic/syntastic'

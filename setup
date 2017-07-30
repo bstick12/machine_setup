@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euxo pipefail
+set -euo pipefail
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -17,21 +17,26 @@ function install_brew {
 
 function install_vimplugins {
   cp ${DIR}/vimrc.local.plugins ~/.vimrc.local.plugins
-  curl vimfiles.luan.sh/install | bash
+  cp ${DIR}/vimrc.local ~/.vimrc.local
+  [ ! -e ~/.vim/bin/install ] && curl vimfiles.luan.sh/install | bash
   vim-update
 }
 
 function install_cli {
 
-  curl -LO "https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/1.2.0/credhub-linux-1.2.0.tgz"
-  tar -zxvf "credhub-linux-1.2.0.tgz"
-  rm "credhub-linux-1.2.0.tgz"
-  sudo mv "credhub" "/usr/local/bin"
-  chmod +x "/usr/local/bin/credhub"
+  if [ ! -e /usr/local/bin/credhub ]; then
+    curl -LO "https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/1.2.0/credhub-linux-1.2.0.tgz"
+    tar -zxvf "credhub-linux-1.2.0.tgz"
+    rm "credhub-linux-1.2.0.tgz"
+    sudo mv "credhub" "/usr/local/bin"
+    chmod +x "/usr/local/bin/credhub"
+  fi
 
-  curl -LO "https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.28-linux-amd64"
-  sudo mv "bosh-cli-2.0.28-linux-amd64" "/usr/local/bin/bosh"
-  chmod +x "/usr/local/bin/bosh"
+  if [ ! -e /usr/local/bin/bosh ]; then
+    curl -LO "https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.28-linux-amd64"
+    sudo mv "bosh-cli-2.0.28-linux-amd64" "/usr/local/bin/bosh"
+    chmod +x "/usr/local/bin/bosh"
+  fi
 
 }
 
