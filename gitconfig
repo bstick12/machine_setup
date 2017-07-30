@@ -3,7 +3,39 @@
   email = brendan.nolan@gmail.com
 
 [push]
-  default = simple
+  default = current
+
+[color "status"]
+  added = green
+  changed = red
+  untracked = yellow
+
+[color]
+  ui = auto
+
+[help]
+  autocorrect=1
+
+[fetch]
+  prune=true
+
+[pull]
+  rebase=true
+
+[rebase]
+  autostash=true
+
+[log]
+  decorate=true
+
+[format]
+  pretty=oneline
+
+[rerere]
+  enabled=true
+
+[commit]
+  verbose=true
 
 [alias]
   remove-merged = !git-remove-merged
