@@ -1,7 +1,12 @@
 if [ -f "/home/brendan/.linuxbrew/opt/bash-git-prompt/share/gitprompt.sh" ]; then
-    __GIT_PROMPT_DIR="/home/brendan/.linuxbrew/opt/bash-git-prompt/share"
-    source "/home/brendan/.linuxbrew/opt/bash-git-prompt/share/gitprompt.sh"
+  __GIT_PROMPT_DIR="/home/brendan/.linuxbrew/opt/bash-git-prompt/share"
+  source "/home/brendan/.linuxbrew/opt/bash-git-prompt/share/gitprompt.sh"
 fi
+
+prompt_callback()
+{
+  gp_set_window_title "$(gp_truncate_pwd)"
+}
 
 if [ -f "/usr/local/bin/kubectl" ]; then
   source <(kubectl completion bash)
