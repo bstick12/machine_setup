@@ -1,6 +1,6 @@
-if [ -f "/home/brendan/.linuxbrew/opt/bash-git-prompt/share/gitprompt.sh" ]; then
-  __GIT_PROMPT_DIR="/home/brendan/.linuxbrew/opt/bash-git-prompt/share"
-  source "/home/brendan/.linuxbrew/opt/bash-git-prompt/share/gitprompt.sh"
+if [ -f "/home/brendan/.bash-git-prompt/gitprompt.sh" ]; then
+  __GIT_PROMPT_DIR="/home/brendan/.bash-git-prompt"
+  source "/home/brendan/.bash-git-prompt/gitprompt.sh"
 fi
 
 prompt_callback()
@@ -17,7 +17,7 @@ if [ -f "/usr/local/bin/minikube" ]; then
 fi
 
 export GOPATH=~/go
-export PATH="${HOME}/.linuxbrew/bin:${PATH}"
+export PATH="${PATH}:/usr/local/go/bin"
 export PATH="${PATH}:${GOPATH}/bin"
 export PATH="${PATH}:${HOME}/.cargo/bin"
 
@@ -25,3 +25,7 @@ export VISUAL=nvim
 export EDITOR="${VISUAL}"
 
 eval "$(direnv hook bash)"
+
+if [ -f "$HOME/.sdkman" ]; then
+  source "$HOME/.sdkman/bin/sdkman-init.sh"
+fi
